@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package api.v1;
+
+option go_package = "github.com/fleetland/fleetland/pkg/genproto/api/v1;apipb";
+
+import "api/shared/error.proto";
+
+message HelloRequest {
+  string greeting_message = 1;
+}
+
+message HelloResponse {
+  api.shared.APIError error = 1;
+
+  string greeting_message = 2;
+  string greeting_message_copy = 3 [json_name = "greeting_message_copy"];
+}

@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package api.v1;
+
+option go_package = "github.com/fleetland/fleetland/pkg/genproto/api/v1;apipb";
+
+import "api/shared/error.proto";
+import "api/shared/user.proto";
+
+message UserProfile {
+  int64 id = 1;
+  string username = 2;
+  string display_name = 3;
+  string email = 4;
+  api.shared.UserMetadata user_metadata = 5;
+  api.shared.AppMetadata app_metadata = 6;
+}
+
+
+
+
+message GetMyProfileRequest {
+}
+
+message GetMyProfileResponse {
+  api.shared.APIError error = 1;
+  UserProfile profile = 2;
+}
+
+message UpdateMyProfileRequest {
+  optional string username = 2;
+  optional string display_name = 3;
+  optional string email = 4;
+  optional string bio = 5;
+  repeated string urls = 6;
+  optional string language = 7;
+}
+
+message UpdateMyProfileResponse {
+  api.shared.APIError error = 1;
+  UserProfile profile = 2;
+}

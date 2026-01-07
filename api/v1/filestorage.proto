@@ -1,0 +1,55 @@
+syntax = "proto3";
+
+package api.v1;
+
+option go_package = "github.com/fleetland/fleetland/pkg/genproto/api/v1;apipb";
+
+import "api/shared/error.proto";
+
+message GetPresignedURLRequest {
+  string category = 1;
+  string mime_type = 2;
+  string filename = 3;
+  string file_path = 4;
+  string file_id = 5;
+}
+
+message GetPresignedURLResponse {
+  api.shared.APIError error = 1;
+
+  string presigned_url = 2;
+  string file_path = 3;
+  string exposed_url = 4;
+  string file_id = 5;
+}
+
+
+message UploadFileRequest {
+  string category = 1;
+  string mime_type = 2;
+  string filename = 3;
+  string url = 4;
+  bool async = 5;
+  bytes data = 6;
+}
+
+message UploadFileResponse {
+  api.shared.APIError error = 1;
+
+  string file_id = 2;
+  string status = 3;
+  string file_path = 4;
+  string presigned_url = 5;
+  string exposed_url = 6;
+}
+
+message GetTaskStatusRequest {
+  string file_id = 1;
+}
+
+message GetTaskStatusResponse {
+  api.shared.APIError error = 1;
+
+  string file_id = 2;
+  string status = 3;
+}
