@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package api.shared;
 
-option go_package = "github.com/fleetland/fleetland/pkg/genproto/api/shared;sharedpb";
+option go_package = "github.com/fleetlit/fleetlit/pkg/genproto/api/shared;sharedpb";
 
 message APIError {
   int32 code = 1;
