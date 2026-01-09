@@ -15,6 +15,7 @@ message GetUserListRequest {
 message GetUserListResponse {
   api.shared.APIError error = 1;
   repeated api.shared.User users = 2;
+  int64 total = 3;
 }
 
 message GetUserRequest {
