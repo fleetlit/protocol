@@ -17,6 +17,14 @@ message GetUserListResponse {
   repeated api.shared.User users = 2;
 }
 
+message GetUserRequest {
+  uint64 id = 1;
+}
+
+message GetUserResponse {
+  api.shared.APIError error = 1;
+  api.shared.User user = 2;
+}
 
 message CreateUserRequest {
   string username = 2;
@@ -33,4 +41,30 @@ message CreateUserRequest {
 message CreateUserResponse {
   api.shared.APIError error = 1;
   api.shared.User user = 2;
+}
+
+message UpdateUserRequest {
+  uint64 id = 1;
+  optional string display_name = 2;
+  optional string avatar_url = 3;
+  optional string phone = 4;
+  optional string email = 5;
+  optional int32 gender = 6;
+  optional int32 status = 7;
+  optional bool is_super_admin = 8;
+  optional string password = 9;
+}
+
+message UpdateUserResponse {
+  api.shared.APIError error = 1;
+  api.shared.User user = 2;
+}
+
+message DeleteUserRequest {
+  repeated uint64 ids = 1;
+}
+
+message DeleteUserResponse {
+  api.shared.APIError error = 1;
+  repeated uint64 ids = 2;
 }
